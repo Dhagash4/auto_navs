@@ -65,9 +65,9 @@ class arduino_launch(object):
 	def Update_Twist(self,msg):
 
 
-		self.linear =  10 * msg.linear.x
+		self.linear =  100 * msg.linear.x
 		#self.linear = msg.linear.x
-		self.angular = 10 * msg.angular.z
+		self.angular = 100 * msg.angular.z
 		
 
 		#print self.angular

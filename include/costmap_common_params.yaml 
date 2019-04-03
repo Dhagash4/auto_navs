@@ -1,1 +1,22 @@
-footprint: [[0, 0],[x1, y1], ... [xn, yn]]
+footprint: [[0.269, 0.393], [-0.269,0.393], [-0.269,-0.393], [0.269,-0.393]]
+footprint_padding: 0.05
+inflation_layer:
+	inflation_radius: 0.5
+tranform_tolerance: 2.0
+
+obstacle_layer:
+	obstacle_range: 2.5
+	raytrace_range: 3.0
+	max_obstacle_height: 0.4
+	track_unknown_space: true
+
+	observation_sources: laser_scan_sensor
+
+	laser_scan_sensor: {
+    	data_type: LaserScan,
+    	topic: scan,
+    	expected_update_rate: 0.1, 
+    	marking: true,
+    	clearing: true
+  	}
+
