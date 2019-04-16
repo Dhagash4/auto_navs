@@ -91,8 +91,8 @@ class arduino_launch(object):
 					self.left_encoder_value = long(lineParts[1])
 					self.right_encoder_value = long(lineParts[2])
 					self.left_encoder.publish(self.left_encoder_value)
-					self.right_encoder.publish(-(self.right_encoder_value))
-                                        # Minus sign as it is taking CCW as CW
+					self.right_encoder.publish(self.right_encoder_value)
+                                        
 
 				if(lineParts[0] == 'r'):
 
@@ -126,7 +126,7 @@ class arduino_launch(object):
 
 		#rospy.loginfo('i %d %d : a %d : e %d : r %d : p %d ' %(int(self.linear_in),int(self.angular_in),int(self.left_set_RPM), int(self.left_encoder_value), int(self.left_RPM),int(self.left_out_PWM)))
 		
-		rospy.loginfo('i %d %d : a %d %d : e %d %d : r %d %d: p %d %d' %(int(self.linear_in),int(self.angular_in),int(self.right_set_RPM),int(self.left_set_RPM), int(-(self.right_encoder_value)), int(self.left_encoder_value),int(self.right_RPM),int(self.left_RPM),int(self.right_out_PWM),int(self.left_out_PWM)))
+		rospy.loginfo('i %d %d : a %d %d : e %d %d : r %d %d: p %d %d' %(int(self.linear_in),int(self.angular_in),int(self.right_set_RPM),int(self.left_set_RPM), int(self.right_encoder_value), int(self.left_encoder_value),int(self.right_RPM),int(self.left_RPM),int(self.right_out_PWM),int(self.left_out_PWM)))
 		
 		self.SerialDataGateway.Write(message)
 
@@ -166,6 +166,3 @@ if __name__ == '__main__':
 
 		arduino.Reset_Arduino()
 		arduino.Stop()
-
-		
-

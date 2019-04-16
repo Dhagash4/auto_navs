@@ -2,8 +2,8 @@
 <launch>
 
 
-  <rosparam param="base_width">0.538</rosparam>
-  <rosparam param="ticks_meter">740</rosparam>
+  <rosparam param="base_width">0.7</rosparam>
+  <rosparam param="ticks_meter">1022</rosparam>
 
   <!--Robot Motor Commands to Arduino and encoder tf-->
   <node name="arduino_node" pkg="agv_nav" type="arduino.py" output="screen" />
