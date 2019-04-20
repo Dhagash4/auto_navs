@@ -99,7 +99,7 @@ class arduino_launch(object):
 					self.left_RPM = long(lineParts[1])
 					self.right_RPM = long(lineParts[2])
 					
-				if(lineParts[0] == 'a'):
+				if(lineParts[0] == 'w'):
 
 					self.left_set_RPM = long(lineParts[1])
 					self.right_set_RPM = long(lineParts[2])
@@ -126,7 +126,7 @@ class arduino_launch(object):
 
 		#rospy.loginfo('i %d %d : a %d : e %d : r %d : p %d ' %(int(self.linear_in),int(self.angular_in),int(self.left_set_RPM), int(self.left_encoder_value), int(self.left_RPM),int(self.left_out_PWM)))
 		
-		rospy.loginfo('i %d %d : a %d %d : e %d %d : r %d %d: p %d %d' %(int(self.linear_in),int(self.angular_in),int(self.right_set_RPM),int(self.left_set_RPM), int(-(self.right_encoder_value)), int(self.left_encoder_value),int(self.right_RPM),int(self.left_RPM),int(self.right_out_PWM),int(self.left_out_PWM)))
+		rospy.loginfo('i %d %d : w %d %d : e %d %d : r %d %d: p %d %d' %(int(self.linear_in),int(self.angular_in),int(self.right_set_RPM),int(self.left_set_RPM), int(-(self.right_encoder_value)), int(self.left_encoder_value),int(self.right_RPM),int(self.left_RPM),int(self.right_out_PWM),int(self.left_out_PWM)))
 		
 		self.SerialDataGateway.Write(message)
 

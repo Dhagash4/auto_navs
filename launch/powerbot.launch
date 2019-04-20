@@ -3,26 +3,26 @@
 
 
   <rosparam param="base_width">0.7</rosparam>
-  <rosparam param="ticks_meter">1022</rosparam>
+  <rosparam param="ticks_meter">27993</rosparam>
 
   <!--Robot Motor Commands to Arduino and encoder tf-->
-  <node name="arduino_node" pkg="agv_nav" type="arduino.py" output="screen" />
+  <node name="arduino_node" pkg="agv_nav" type="arduino_powerbot.py" output="screen" />
   <node pkg="agv_nav" type="diff_tf.py" name="diff_tf" output="screen" />
 
-  <!--IMU--> 
+  <!--IMU> 
   
   <arg name="razor_config_file" default="$(find razor_imu_9dof)/config/razor.yaml"/>
   <node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="screen">
     <rosparam file="$(arg razor_config_file)" command="load"/>
   </node>
   
-  <!--EKF Sensor Fusion-->
+  <EKF Sensor Fusion>
   <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
     <rosparam command="load" file="$(find robot_localization)/params/ekf_template.yaml" />
 
     
 
-  </node>
+  </node-->
   
   
 

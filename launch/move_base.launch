@@ -2,23 +2,19 @@
 
 <launch>
 
-  <arg name="scan_topic" default="/scan"/>
-  <arg name="map_topic" default="/map"/>
+   
+ <!-- Run the map server --> 
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find agv_nav)/map_grid.pgm 0.05"/>
 
-  <!-- ROS navigation stack move_base -->
+ <!--- Run AMCL --> 
+    <include file="$(find amcl)/examples/amcl_diff.launch" />
 
-  <remap from="scan"             to="$(arg scan_topic)"/>  <!-- see costmap_common_params_2d.yaml -->
-  <remap from="map"              to="$(arg map_topic)"/>   <!-- see global_costmap_params.yaml -->
-        
-  <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find agv_nav)/include/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+    <rosparam file="$(find agv_nav)/include/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find agv_nav)/include/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find agv_nav)/include/global_costmap_params.yaml" command="load" /> 
+    <rosparam file="$(find agv_nav)/include/base_local_planner_params.yaml" command="load" />
+ </node>
 
-     <param name="base_global_planner" value="navfn/NavfnROS"/>
-     <rosparam file="$(find agv_nav)/include/costmap_common_params.yaml" command="load" ns="global_costmap" />
-     <rosparam file="$(find agv_nav)/include/costmap_common_params.yaml" command="load" ns="local_costmap" />
-     <rosparam file="$(find agv_nav)/include/local_costmap_params.yaml" command="load" ns="local_costmap" />
-     <rosparam file="$(find agv_nav)/include/global_cosmap_params.yaml" command="load" ns="global_costmap"/>
-     <rosparam file="$(find agv_nav)/include/base_local_planner_params.yaml" command="load" />
-
-  </node>
-
-</launch>
+</launch> 
