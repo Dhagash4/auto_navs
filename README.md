@@ -1,7 +1,7 @@
 # auto_navs
 
 
-Final Two Motor Code is for controlling Powerbot and please check the pins before running the code
+Final Two Motor Code is Arduino code for controlling Powerbot and please check the pins before running the code
 
 
 arduino.py is used for communicating ROS with Arduino with less latency
