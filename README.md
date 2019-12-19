@@ -23,7 +23,7 @@ To replicate results of autonomous navigation on any robot:(like p3dx)
 First you need to change the parameters of foorprint in costmap_commmon_params.yaml. Footprint basically is bounding box of the robot as
 from the top view
 
-For robot like p3dx you dont need to run arduino.py(i.e no need for step 1 as above) is there is inbuilt controller inside it and publishing the topics just remap the appropriatte topics 
+For robot like p3dx you dont need to run arduino.py(i.e no need for step 1 as above) is there is inbuilt controller inside it and publishing the topics just remap the appropriate topics 
 of move_base.launch.xml
 
 
