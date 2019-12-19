@@ -1,0 +1,19 @@
+<launch>
+  <arg name="bagfile"  default=""/>
+
+  <node pkg="tf" type="tf_remap" name="tf_remapper" output="screen">
+    <rosparam param="mappings">
+      [{old: world, new: odom},{old: body, new: base_link}]
+    </rosparam>
+  </node>
+
+  <node pkg="rosbag" type="play" name="rosbag" required="true" args="--clock $(arg bagfile)" output="screen">
+    <remap from="tf" to="tf_old" />
+  </node>
+
+  <node name="republish_color" type="republish" pkg="image_transport" output="screen" args="compressed in:=/camera/color/image_raw raw out:=/camera/color/image_raw" />
+  <!-- <node name="extract" pkg="image_view" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+  <remap from="image" to="/camera/color/image_raw"/>
+  <param name="sec_per_frame" value="0.03"/>
+  </node> -->
+</launch>
